@@ -39,10 +39,13 @@ public class Product {
     @Lob
     private byte[] data;
 
-
-    @JsonIgnore
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "product")
-    private List<Cart> carts;
-
-
+    public Product(String name, double price, Category category, Brand brand, String fileName, String fileType, byte[] data) {
+        this.name = name;
+        this.price = price;
+        this.category = category;
+        this.brand = brand;
+        this.fileName = fileName;
+        this.fileType = fileType;
+        this.data = data;
+    }
 }

@@ -15,16 +15,7 @@ import java.util.Optional;
 @Service
 public class CartService {
 
-    Integer num;
-
-    public Integer getNum() {
-        return num;
-    }
-
-    public void setNum(Integer num) {
-        this.num = num;
-    }
-
+    int num;
 
     @Autowired
     CartRepository cartRepository;
@@ -32,10 +23,14 @@ public class CartService {
     @Autowired
     ProductRepository productRepository;
 
+
     public Cart saveCart(Cart cart) throws IOException {
 
-        Optional<Product> pro = productRepository.findById(cart.getProduct().getId());
+        System.out.println(cart.getProduct().getId());
+        Optional<Product> product1 = productRepository.findById(cart.getProduct().getId());
+        setNum(cart.getQuantity());
+        cart.setTotalAmount(getNum()*(cart.getQuantity()));
 
-        return null;
+        return cartRepository.save(cart);
     }
 }

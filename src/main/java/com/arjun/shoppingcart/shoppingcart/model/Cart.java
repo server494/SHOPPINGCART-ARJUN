@@ -3,7 +3,7 @@ package com.arjun.shoppingcart.shoppingcart.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 import javax.persistence.*;
 
@@ -17,6 +17,13 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private int quantity;
+    private int totalAmount;
+
+    public Cart() {
+    }
+
+
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
@@ -27,10 +34,6 @@ public class Cart {
     private User user;
 
 
-    private int quantity;
-    private int totalAmount;
 
-    public Cart() {
-    }
 
 }
